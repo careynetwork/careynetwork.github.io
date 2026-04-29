@@ -3,39 +3,78 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-
 <title>Extras - The Carey Network</title>
-
-<link rel="stylesheet" href="../css/style.css" />
 
 <link rel="apple-touch-icon" href="/images/icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Carey Network">
+
 <link rel="icon" href="/images/icon.png">
 <link rel="manifest" href="/manifest.json">
 
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/extras.css" />
 </head>
+
 <body>
 
 <header class="site-header">
-  <img src="../images/logo.png" class="logo" alt="The Carey Network Logo" />
+  <img src="../images/logo.png" class="logo" />
 </header>
 
 <main>
   <section class="hero orange-bg">
-  <h1 class="hero-text">Coming Soon...</h1>
+
+    <div class="settings-menu">
+
+      <div class="setting-card" onclick="openPanel('cloak')">
+        <h3>App Cloaking</h3>
+        <button>Open</button>
+      </div>
+
+      <div class="setting-card" onclick="openPanel('links')">
+        <h3>Links</h3>
+        <button>Open</button>
+      </div>
+
+      <div class="setting-card" onclick="openPanel('changelog')">
+        <h3>Changelog</h3>
+        <button>View</button>
+      </div>
+
+      <div class="setting-card" onclick="openPanel('code')">
+        <h3>Codes</h3>
+        <button>Enter</button>
+      </div>
+
+    </div>
+
   </section>
 </main>
 
-<!-- Utility Bar -->
 <div id="nav-container"></div>
 
 <footer class="site-footer">
-  <p>&copy; 2026 The Carey Network</p>
+  <p>&copy; 2026 The Carey Network.</p>
 </footer>
 
+<!-- PANEL UI -->
+<div id="extras-panel" class="extras-overlay">
+  <div class="extras-content">
+
+    <div class="extras-header">
+      <h2 id="panel-title">Panel</h2>
+      <button onclick="closePanel()">✕</button>
+    </div>
+
+    <div id="panel-body" class="extras-body"></div>
+
+  </div>
+</div>
+
 <script src="/js/main.js"></script>
+<script src="/js/extras.js"></script>
 
 </body>
 </html>
