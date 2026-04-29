@@ -1,4 +1,5 @@
-/* ===== EXTRAS MENU ===== */
+
+/* ===== SETTINGS BASE (reuse your system) ===== */
 
 .settings-menu {
   background: rgba(0,0,0,0.5);
@@ -14,7 +15,6 @@
   box-shadow: 0 0 20px rgba(230,92,0,0.3);
 }
 
-/* reuse your existing card style */
 .setting-card {
   background: rgba(17,17,17,0.75);
   border-radius: 18px;
@@ -27,7 +27,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transition: 0.25s ease;
 }
 
 .setting-card:hover {
@@ -45,7 +45,7 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 0 12px #e65c00;
-  transition: 0.2s ease;
+  transition: 0.2s;
 }
 
 .setting-card button:hover {
@@ -53,7 +53,7 @@
   box-shadow: 0 0 20px #fff, 0 0 40px #e65c00;
 }
 
-/* ===== PANEL OVERLAY ===== */
+/* ===== PANEL ===== */
 
 .extras-overlay {
   position: fixed;
@@ -106,7 +106,61 @@
   overflow-y: auto;
 }
 
-/* panel buttons */
+/* ===== CLOAK GRID ===== */
+
+.cloak-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 15px 0 20px;
+}
+
+.cloak-option {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(230,92,0,0.25);
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.25s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cloak-option:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #e65c00;
+  border-color: rgba(230,92,0,0.7);
+}
+
+.cloak-option img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+}
+
+/* ===== INPUT ===== */
+
+.panel-input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  margin-top: 10px;
+  outline: none;
+  transition: 0.25s;
+}
+
+.panel-input:focus {
+  border-color: #e65c00;
+  background: rgba(230,92,0,0.08);
+  box-shadow: 0 0 12px rgba(230,92,0,0.4);
+}
+
+/* ===== BUTTONS ===== */
+
 .panel-btn {
   width: 100%;
   padding: 14px;
@@ -120,14 +174,18 @@
   box-shadow: 0 0 10px #e65c00;
 }
 
-/* input */
-.panel-input {
+.panel-reset {
   width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  background: #111;
-  color: #fff;
+  padding: 10px;
   margin-top: 10px;
-  outline: none;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  color: #aaa;
+  cursor: pointer;
+}
+
+.panel-reset:hover {
+  color: #fff;
+  border-color: #e65c00;
 }
