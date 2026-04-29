@@ -126,9 +126,16 @@ function openCloak() {
 
 /* ===== AUTO CLOAK ===== */
 function maybeAutoCloak() {
+  // basic guards
   if (window !== window.top) return;
   if (localStorage.getItem("autoCloak") !== "true") return;
   if (detectWebAppMode()) return;
+
+  // wait until page fully loaded
+  if (document.readyState !== "complete") {
+    window.addEventListener("load", maybeAutoCloak, { once: true });
+    return;
+  }
 
   const overlay = document.createElement("div");
   overlay.id = "cloak-overlay";
@@ -167,15 +174,19 @@ function maybeAutoCloak() {
 
   document.body.appendChild(overlay);
 
-  function triggerCloak() {
+  function triggerCloak(e) {
+    e.preventDefault();
+
+    // remove once to avoid double dih
     overlay.removeEventListener("click", triggerCloak);
-    overlay.removeEventListener("touchstart", triggerCloak);
     overlay.remove();
+
+    // edge
     openCloak();
   }
 
+  // ts makes it more sigma
   overlay.addEventListener("click", triggerCloak);
-  overlay.addEventListener("touchstart", triggerCloak, { passive: true });
 }
 
 window.openCloak = openCloak;
