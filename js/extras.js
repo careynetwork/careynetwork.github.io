@@ -182,12 +182,13 @@ function submitCode() {
   const out   = document.getElementById("codeOutput");
   if (!input || !out) return;
   const val = input.value.trim();
+  if (!val) return;
   try {
     const result = Function('"use strict"; return (' + val + ')')();
-    out.textContent = String(result);
+    out.textContent = result !== undefined ? String(result) : "✓ Done (no return value)";
     out.style.color = "#7fff7f";
   } catch (err) {
-    out.textContent = "✗ " + err.message;
+    out.textContent = "✗ Incorrect code";
     out.style.color = "#ff6b6b";
   }
 }
