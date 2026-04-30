@@ -17,14 +17,6 @@ function unlockScroll() {
   window.scrollTo(0, _scrollY);
 }
 
-// ─── Restore cloak on load ───────────────────────────────────────
-(function () {
-  const name = localStorage.getItem("appName");
-  const icon = localStorage.getItem("appIcon");
-  if (name) document.title = name;
-  if (icon) applyIconLinks(icon);
-})();
-
 // ─── Panel open / close ──────────────────────────────────────────
 function openPanel(type) {
   lockScroll();
@@ -41,7 +33,7 @@ function openPanel(type) {
     title.textContent = "App Cloaking";
     body.innerHTML = `
       <p id="cloak-status" class="cloak-status"></p>
-      <p class="panel-hint">Select an app icon style.</p>
+      <p class="panel-hint">Select a cloak icon.</p>
       <div class="cloak-grid">
         <div class="cloak-option" onclick="setCloak('classroom')">
           <img src="/images/cloak/classroom.png" /><span>Classroom</span>
@@ -105,7 +97,7 @@ function showCloakStatus(msg, color = "#e65c00") {
   el.style.color = color;
 }
 
-// ─── Apply icon + manifest ────────────────────────────────────────
+// ─── Apply icon + manifest (used by setCloak/resetCloak) ─────────
 function applyIconLinks(iconUrl) {
   let favicon = document.querySelector("link[rel~='icon']");
   if (!favicon) {
@@ -131,12 +123,12 @@ let manifestURL = null;
 
 function injectManifest(appName, iconUrl) {
   const manifest = {
-    name: appName,
-    short_name: appName,
-    start_url: "/",
-    display: "standalone",
+    name:             appName,
+    short_name:       appName,
+    start_url:        "/",
+    display:          "standalone",
     background_color: "#111111",
-    theme_color: "#e65c00",
+    theme_color:      "#e65c00",
     icons: [
       { src: iconUrl, sizes: "192x192", type: "image/png" },
       { src: iconUrl, sizes: "512x512", type: "image/png" }
@@ -158,10 +150,10 @@ function injectManifest(appName, iconUrl) {
 
 // ─── Cloak system ────────────────────────────────────────────────
 const CLOAKS = {
-  classroom: { name: "Google Classroom", icon: "/images/classroom.png" },
-  docs:      { name: "Google Docs",      icon: "/images/docs.png"      },
-  slides:    { name: "Google Slides",    icon: "/images/slides.png"    },
-  drive:     { name: "Google Drive",     icon: "/images/drive.png"     }
+  classroom: { name: "Google Classroom", icon: "/images/cloak/classroom.png" },
+  docs:      { name: "Google Docs",      icon: "/images/cloak/docs.png"      },
+  slides:    { name: "Google Slides",    icon: "/images/cloak/slides.png"    },
+  drive:     { name: "Google Drive",     icon: "/images/cloak/drive.png"     }
 };
 
 function setCloak(type) {
@@ -175,7 +167,7 @@ function setCloak(type) {
 }
 
 function resetCloak() {
-  const name = "The Carey Network";
+  const name = "Carey Network";
   const icon = "/images/icon.png";
   document.title = name;
   applyIconLinks(icon);
