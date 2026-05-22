@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apps - Carey Network</title>
+
+<link rel="stylesheet" href="/loading/loading.css" />
+<script src="/loading/loading.js" defer></script>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#gameFrame {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+</style>
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loading-screen">
+  <div class="loader-content">
+    <div class="logo">Carey Network</div>
+    <div class="spinner"></div>
+    <div class="loading-text">*this is an experimental feature so it may not work sometimes (fixed!)*</div>
+  </div>
+</div>
+
+<iframe
+  id="gameFrame"
+  data-load-time="3000"
+  src="https://yay.schoolforlife.online/embed.html#https://snapchat.com/spotlight"
+  sandbox="allow-scripts allow-forms allow-same-origin allow-pointer-lock allow-downloads"
+  allow="fullscreen; autoplay; clipboard-read; clipboard-write"
+  allowfullscreen
+  frameborder="0"
+></iframe>
+  
+</body>
+</html>
