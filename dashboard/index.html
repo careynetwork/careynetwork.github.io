@@ -16,6 +16,17 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <style>
+/* ---- Disable transition system (no main.js) ---- */
+body,
+body header,
+body main,
+body footer {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
+
 /* ---- Dashboard overrides ---- */
 
 /* Shrink the hero — we don't need 70vh for just a title */
@@ -248,7 +259,6 @@ onValue(ref(db, "activity"), snap => {
 });
 </script>
 
-<style>body { opacity: 1 !important; }</style>
 
 </body>
 </html>
